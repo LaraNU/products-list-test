@@ -2,6 +2,7 @@ import styles from "./ProductsPage.module.css";
 import { useState, useEffect } from "react";
 import getProductsApi from "../api/productApi";
 import ProductCard from "../components/ProductCard";
+import Navigation from "../components/Navigation";
 
 type CardProps = {
   id: number;
@@ -23,17 +24,20 @@ const ProductsPage = () => {
   };
 
   return (
-    <div className={styles.cardsContainer}>
-      {products.map((card: CardProps) => (
-        <ProductCard
-          key={card.id}
-          id={card.id}
-          title={card.title}
-          description={card.description}
-          image={card.image}
-        />
-      ))}
-    </div>
+    <>
+      <Navigation />
+      <div className={styles.cardsContainer}>
+        {products.map((card: CardProps) => (
+          <ProductCard
+            key={card.id}
+            id={card.id}
+            title={card.title}
+            description={card.description}
+            image={card.image}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 

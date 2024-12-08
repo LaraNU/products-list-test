@@ -44,6 +44,7 @@
   line-height: 152%;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  transition: 0.5s;
 }
 
 .cardDesc {
@@ -65,4 +66,13 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    cursor: pointer;
+  }
+  .card:hover .cardTitle {
+    color: rgb(255, 102, 0);
+  }
 }
