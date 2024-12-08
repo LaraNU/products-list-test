@@ -5,5 +5,5 @@
   align-items: center;
   min-height: 100%;
   margin: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
