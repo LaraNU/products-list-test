@@ -1,4 +1,7 @@
 import styles from "./ProductCard.module.css";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 type ProdactCardProps = {
   id: number;
@@ -18,6 +21,13 @@ const ProductCard = ({ id, title, description, image }: ProdactCardProps) => {
       <div className={styles.cardInfo}>
         <p className={styles.cardTitle}>{title}</p>
         <p className={styles.cardDesc}>{description}</p>
+        <div className={styles.cardIcon}>
+          <FavoriteBorderIcon />
+          <div className={styles.cardIconEdit}>
+            <EditIcon />
+            <DeleteIcon />
+          </div>
+        </div>
       </div>
     </div>
   );
