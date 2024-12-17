@@ -1,0 +1,45 @@
+import { createSlice, nanoid } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { fakestoreApi } from "./productsApiRedux";
+
+interface Product {
+  id: number;
+  title: string;
+  price?: string;
+  category?: string;
+  description: string;
+  image: string;
+  isLiked?: boolean;
+}
+
+const productsSlice = createSlice({
+  name: "products",
+  initialState: [] as Product[],
+  reducers: {
+    createProduct(state, action) {},
+    updateProduct(state, action) {},
+    deleteProduct(state, action) {
+      return state.filter((p) => p.id !== action.payload);
+    },
+    likeProduct(state, action) {
+      const product = state.find((p) => p.id === action.payload);
+      if (product) {
+        product.isLiked = !product.isLiked;
+      }
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      fakestoreApi.endpoints.getProducts.matchFulfilled,
+      (state, action) => {
+        return action.payload.map((product: Product) => ({
+          ...product,
+          isLiked: false,
+        }));
+      }
+    );
+  },
+});
+
+export const { likeProduct, deleteProduct } = productsSlice.actions;
+export default productsSlice.reducer;
