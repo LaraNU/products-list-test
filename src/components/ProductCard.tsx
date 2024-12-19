@@ -25,7 +25,7 @@ const ProductCard = ({ id, title, description, image }: ProdactCardProps) => {
   );
 
   const handleNavigate = () => {
-    navigate(`/product/${id}`);
+    navigate(`/products/${id}`);
   };
 
   const handleLike = (event: React.MouseEvent) => {

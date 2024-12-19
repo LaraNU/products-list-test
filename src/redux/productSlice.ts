@@ -29,15 +29,29 @@ const productsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(
-      fakestoreApi.endpoints.getProducts.matchFulfilled,
-      (state, action) => {
-        return action.payload.map((product: Product) => ({
-          ...product,
-          isLiked: false,
-        }));
-      }
-    );
+    builder
+      .addMatcher(
+        fakestoreApi.endpoints.getProducts.matchFulfilled,
+        (state, action) => {
+          return action.payload.map((product: Product) => ({
+            ...product,
+            isLiked: false,
+          }));
+        }
+      )
+      .addMatcher(
+        fakestoreApi.endpoints.getProductById.matchFulfilled,
+        (state, action) => {
+          const product = action.payload;
+          const existingProduct = state.find((p) => p.id === product.id);
+
+          if (!existingProduct) {
+            state.push({ ...product, isLiked: false });
+          } else {
+            Object.assign(existingProduct, product);
+          }
+        }
+      );
   },
 });
 

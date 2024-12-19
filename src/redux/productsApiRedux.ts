@@ -19,7 +19,7 @@ export const fakestoreApi = createApi({
       query: () => "",
     }),
     getProductById: builder.query({
-      query: (id) => id,
+      query: (id) => `${id}`,
     }),
   }),
 });

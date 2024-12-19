@@ -1,0 +1,58 @@
+.fullCard {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin: auto 0;
+}
+
+.cardImgContainer {
+  height: 500px;
+  width: 100%;
+  min-width: 450px;
+}
+
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.cardPrice {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.cardPrice span {
+  color: #ac0000;
+  font-size: 1.5rem;
+}
+
+.cardTitle {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 152%;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cardTitle span {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.cardDesc {
+  font-size: 1.3rem;
+}
+
+.cardDesc span {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
