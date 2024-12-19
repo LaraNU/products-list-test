@@ -3,16 +3,25 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import ProductsPage from "./pages/ProductsPage";
-import FullProductCard from "./components/FullProductCard";
+import FullProductCard from "./pages/FullProductPage";
+import Layout from "./components/Layout";
 
 const router = createBrowserRouter([
   {
     path: "/products",
-    element: <ProductsPage />,
+    element: (
+      <Layout>
+        <ProductsPage />
+      </Layout>
+    ),
   },
   {
     path: "/products/:productId",
-    element: <FullProductCard />,
+    element: (
+      <Layout>
+        <FullProductCard />
+      </Layout>
+    ),
   },
 ]);
 

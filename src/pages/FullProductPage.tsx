@@ -1,4 +1,4 @@
-import styles from "./FullProductCard.module.css";
+import styles from "./FullProductPage.module.css";
 import { Skeleton } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";

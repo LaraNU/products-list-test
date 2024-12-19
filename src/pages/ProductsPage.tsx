@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material";
 import ProductCard from "../components/ProductCard";
-import Navigation from "../components/Navigation";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fakestoreApi } from "../redux/productsApiRedux";
@@ -42,7 +41,6 @@ const ProductsPage = () => {
 
   return (
     <>
-      <Navigation />
       <TextField label="search" id="fullWidth" fullWidth />
 
       <FormControl sx={{ m: 2, minWidth: 120 }}>
