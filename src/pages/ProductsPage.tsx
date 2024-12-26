@@ -31,9 +31,9 @@ const ProductsPage = () => {
   const products = useSelector((state: RootState) => state.products);
   const favoriteProducts = products.filter((product) => product.isLiked === true);
 
-  useEffect(() => {
-    dispatch(fakestoreApi.endpoints.getProducts.initiate());
-  }, [dispatch, products.length]);
+  // useEffect(() => {
+  //   dispatch(fakestoreApi.endpoints.getProducts.initiate());
+  // }, [dispatch, products.length]);
 
   const handleChange = (event: SelectChangeEvent) => {
     setCategories(event.target.value as string);

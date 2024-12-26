@@ -2,24 +2,14 @@ import styles from "./FullProductPage.module.css";
 import { Skeleton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useParams, Link } from "react-router-dom";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import type { AppDispatch } from "../redux/store";
+import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import { fakestoreApi } from "../redux/productsApiRedux";
 
 const FullProductCard = () => {
   const { productId } = useParams<{ productId: string }>();
-  const dispatch = useDispatch<AppDispatch>();
   const product = useSelector((state: RootState) =>
     state.products.find((p) => p.id === parseInt(productId || "0"))
   );
-
-  useEffect(() => {
-    if (!product) {
-      dispatch(fakestoreApi.endpoints.getProductById.initiate(Number(productId)));
-    }
-  }, [dispatch, product, productId]);
 
   return (
     <>
