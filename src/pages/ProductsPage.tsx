@@ -9,12 +9,10 @@ import {
 } from "@mui/material";
 import { SelectChangeEvent } from "@mui/material";
 import ProductCard from "../components/ProductCard";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fakestoreApi } from "../redux/productsApiRedux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useGetProductsQuery } from "../redux/productsApiRedux";
 import { RootState } from "../redux/store";
-import type { AppDispatch } from "../redux/store";
 
 type CardProps = {
   id: number;
@@ -27,13 +25,8 @@ const ProductsPage = () => {
   const [selectCategories, setCategories] = useState("all");
   const { isLoading } = useGetProductsQuery();
 
-  const dispatch = useDispatch<AppDispatch>();
   const products = useSelector((state: RootState) => state.products);
   const favoriteProducts = products.filter((product) => product.isLiked === true);
-
-  // useEffect(() => {
-  //   dispatch(fakestoreApi.endpoints.getProducts.initiate());
-  // }, [dispatch, products.length]);
 
   const handleChange = (event: SelectChangeEvent) => {
     setCategories(event.target.value as string);
