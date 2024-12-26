@@ -1,6 +1,7 @@
 import styles from "./FullProductPage.module.css";
 import { Skeleton } from "@mui/material";
-import { useParams } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import type { AppDispatch } from "../redux/store";
@@ -24,6 +25,10 @@ const FullProductCard = () => {
     <>
       {product ? (
         <div className={styles.fullCard}>
+          <Link to="/products">
+            <ArrowBackIcon fontSize="large" />
+          </Link>
+
           <div className={styles.cardImgContainer}>
             <img className={styles.cardImg} src={product?.image} alt={product?.title} />
           </div>
