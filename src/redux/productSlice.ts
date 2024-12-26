@@ -12,11 +12,15 @@ interface Product {
   isLiked?: boolean;
 }
 
+let newId = 0;
+
 const productsSlice = createSlice({
   name: "products",
   initialState: [] as Product[],
   reducers: {
-    createProduct(state, action) {},
+    createProduct(state, action) {
+      state.push({ ...action.payload, isLiked: false, id: ++newId });
+    },
     updateProduct(state, action) {},
     deleteProduct(state, action) {
       return state.filter((p) => p.id !== action.payload);
@@ -33,6 +37,7 @@ const productsSlice = createSlice({
       .addMatcher(
         fakestoreApi.endpoints.getProducts.matchFulfilled,
         (state, action) => {
+          newId = action.payload.length;
           return action.payload.map((product: Product) => ({
             ...product,
             isLiked: false,
@@ -55,5 +60,5 @@ const productsSlice = createSlice({
   },
 });
 
-export const { likeProduct, deleteProduct } = productsSlice.actions;
+export const { likeProduct, deleteProduct, createProduct } = productsSlice.actions;
 export default productsSlice.reducer;
