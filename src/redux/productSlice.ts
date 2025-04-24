@@ -1,5 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { fakestoreApi } from "./productsApiRedux";
 
 interface Product {
@@ -21,7 +20,6 @@ const productsSlice = createSlice({
     createProduct(state, action) {
       state.push({ ...action.payload, isLiked: false, id: ++newId });
     },
-    updateProduct(state, action) {},
     deleteProduct(state, action) {
       return state.filter((p) => p.id !== action.payload);
     },
@@ -34,16 +32,13 @@ const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addMatcher(
-        fakestoreApi.endpoints.getProducts.matchFulfilled,
-        (state, action) => {
-          newId = action.payload.length;
-          return action.payload.map((product: Product) => ({
-            ...product,
-            isLiked: false,
-          }));
-        }
-      )
+      .addMatcher(fakestoreApi.endpoints.getProducts.matchFulfilled, (_, action) => {
+        newId = action.payload.length;
+        return action.payload.map((product: Product) => ({
+          ...product,
+          isLiked: false,
+        }));
+      })
       .addMatcher(
         fakestoreApi.endpoints.getProductById.matchFulfilled,
         (state, action) => {

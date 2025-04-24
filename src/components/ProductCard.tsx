@@ -64,7 +64,6 @@ const ProductCard = ({ id, title, description, image }: ProdactCardProps) => {
             <EditIcon
               onClick={(event) => {
                 event.stopPropagation();
-                console.log(event, "EditIcon");
               }}
             />
             <DeleteIcon onClick={handleDelete} />

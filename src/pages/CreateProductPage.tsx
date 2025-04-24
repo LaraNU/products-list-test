@@ -23,7 +23,6 @@ const CreateProductPage = () => {
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<ProdactCardProps> = (data) => {
-    console.log(data);
     dispatch(createProduct(data));
     navigate("/products");
   };
