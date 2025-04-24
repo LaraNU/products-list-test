@@ -1,7 +1,7 @@
 import "./App.css";
 import { useEffect } from "react";
 import { fakestoreApi } from "./redux/productsApiRedux";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch } from "./redux/store";
 import { RootState } from "./redux/store";
@@ -11,6 +11,10 @@ import CreateProductPage from "./pages/CreateProductPage";
 import Layout from "./components/Layout";
 
 const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate to="/products" replace />,
+  },
   {
     path: "/products",
     element: (
